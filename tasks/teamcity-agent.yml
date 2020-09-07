@@ -74,7 +74,7 @@
     mode: 0755
 
 - name: "Ensure TeamCity Agent is running"
-  when: "{{ lookup('env', 'DONT_START_TEAMCITY') }}" is not defined
+  when: dontstartteamcity is not defined
   service:
     name: teamcity-agent
     state: started
