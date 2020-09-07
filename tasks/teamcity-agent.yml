@@ -79,3 +79,10 @@
     name: teamcity-agent
     state: started
     enabled: yes
+
+- name: "Ensure TeamCity Agent will be started on boot"
+  when: dontstartteamcity is defined
+  service:
+    name: teamcity-agent
+    state: stopped
+    enabled: yes
