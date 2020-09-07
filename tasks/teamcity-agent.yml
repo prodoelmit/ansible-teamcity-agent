@@ -1,5 +1,6 @@
 ---
 - name: "Download Agent Package"
+  when: use_local_agent_zip is undefined
   get_url:
     url: "https://{{ teamcity_agent_server_url }}/update/buildAgent.zip"
     dest: /tmp
@@ -30,7 +31,7 @@
     owner: "{{ teamcity_agent_user }}"
     group: "{{ teamcity_agent_group }}"
     copy: "no"
-  when: _teamcity_agent_package|changed
+  when: _teamcity_agent_package|changed|use_local_agent_zip
 
 - name: "Add TeamCity Agent service default config"
   template:
