@@ -1,6 +1,10 @@
 #/lib/systemd/system
 [Unit]
 Description="TeamCity Agent"
+{% if waitvpn is defined %}
+Wants=sys-devices-virtual-net-tap.device
+After=sys-devices-virtual-net-tap.device
+{% endif %}
 
 [Service]
 User={{ teamcity_agent_user }}
