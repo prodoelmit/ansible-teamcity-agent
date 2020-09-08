@@ -10,7 +10,7 @@ After=sys-devices-virtual-net-tap.device
 User={{ teamcity_agent_user }}
 ExecStart=/bin/bash -c '\
     source /etc/default/teamcity-agent;\
-    while [ -z $(nslookup teamcity.office.fusioncore.ru | grep 10.10) ]; do echo "not yet right dns"; sleep 1; done \
+    while [ -z $(nslookup teamcity.office.fusioncore.ru | grep 10.10) ]; do echo "not yet right dns"; sleep 1; done; \
     exec {{ teamcity_agent_install_dir }}/bin/agent.sh run'
 ExecStop={{ teamcity_agent_install_dir }}/bin/agent.sh stop
 RemainAfterExit=yes
