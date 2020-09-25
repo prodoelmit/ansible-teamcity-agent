@@ -2,8 +2,8 @@
 [Unit]
 Description="TeamCity Agent"
 {% if waitvpn is defined %}
-Wants=sys-devices-virtual-net-tap0.device
-After=sys-devices-virtual-net-tap0.device
+Wants=sys-devices-virtual-net-tun0.device
+After=sys-devices-virtual-net-tun0.device
 {% endif %}
 
 [Service]
